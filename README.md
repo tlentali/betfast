@@ -22,7 +22,7 @@ So from :
 | Agathe   | team 1 |
 | Amandine | team 2 |
 | Amélie   | team 1 |
-| Edouard  | team 3 |
+| Edouard  | team 2 |
 
 With build a connection matrix like this one using `data/parse.py` :
 
