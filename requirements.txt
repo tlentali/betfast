@@ -1,1 +1,4 @@
-
+PuLP==1.6.9
+numpy==1.15.2
+ortools==6.9.5824
+pandas==0.20.1
