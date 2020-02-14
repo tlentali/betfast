@@ -24,7 +24,7 @@ class WeddingChartPrinter(cp_model.CpSolverSolutionCallback):
         self.__solution_count += 1
 
         for t in range(self.__num_tables):
-            print("Table %d: " % t)
+            print("Dej %d: " % t)
             for g in range(self.__num_guests):
                 if self.Value(self.__seats[(t, g)]):
                     print("  " + self.__names[g])
@@ -78,20 +78,20 @@ def SolveWithDiscreteModel():
     for t in all_tables:
         for g in all_guests:
             seats[(t, g)] = model.NewBoolVar(
-                "guest %i seats on table %i" % (g, t))
+                "guest %i match on dej %i" % (g, t))
 
     colocated = {}
     for g1 in range(num_guests - 1):
         for g2 in range(g1 + 1, num_guests):
             colocated[(g1, g2)] = model.NewBoolVar(
-                "guest %i seats with guest %i" % (g1, g2))
+                "guest %i match with guest %i" % (g1, g2))
 
     same_table = {}
     for g1 in range(num_guests - 1):
         for g2 in range(g1 + 1, num_guests):
             for t in all_tables:
                 same_table[(g1, g2, t)] = model.NewBoolVar(
-                    "guest %i seats with guest %i on table %i" % (g1, g2, t))
+                    "guest %i match with guest %i on dej %i" % (g1, g2, t))
 
     # Objective
     model.Maximize(
