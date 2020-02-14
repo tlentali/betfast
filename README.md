@@ -13,7 +13,7 @@ Breakfast binom builder
 
 # Example
 
-Our objectif is to have binoms from different teams.  
+Our objective is to have binoms from different teams.  
 The model used here describes the problem by maximizing the number of connections between people.  
 So from :
 
