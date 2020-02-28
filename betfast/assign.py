@@ -2,6 +2,7 @@ from __future__ import print_function
 from ortools.sat.python import cp_model
 import time
 import pandas as pd
+import datetime
 
 
 class WeddingChartPrinter(cp_model.CpSolverSolutionCallback):
@@ -22,9 +23,13 @@ class WeddingChartPrinter(cp_model.CpSolverSolutionCallback):
         print("Solution %i, time = %f s, objective = %i" %
               (self.__solution_count, current_time - self.__start_time, objective))
         self.__solution_count += 1
+        today = datetime.date.today()
 
         for t in range(self.__num_tables):
-            print("Dej %d: " % t)
+            next_monday = today + datetime.timedelta(days=-today.weekday(), weeks=t+1)
+            next_friday = next_monday + datetime.timedelta(days=4)
+
+            print("Date %s: " % next_friday.strftime("%Y/%m/%d"))
             for g in range(self.__num_guests):
                 if self.Value(self.__seats[(t, g)]):
                     print("  " + self.__names[g])
